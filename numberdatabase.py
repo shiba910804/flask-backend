@@ -1,3 +1,4 @@
+
 from flask import Flask, request, jsonify
 import psycopg2
 import os
@@ -10,6 +11,11 @@ DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://flutter_number_user:4LWRR
 def get_db_connection():
     conn = psycopg2.connect(DATABASE_URL)
     return conn
+
+# 正文頁面
+@app.route('/')
+def home():
+    return "Hello, this is the home page of your Flask application."
 
 # 註冊 API
 @app.route('/register', methods=['POST'])
